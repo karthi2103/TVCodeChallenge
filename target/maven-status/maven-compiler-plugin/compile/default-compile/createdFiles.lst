@@ -1,7 +1,6 @@
-testClass/SignInTest.class
-testUtil/WaitUtil.class
-testUtil/CommandUtil.class
-testClass/FlightBookingTest.class
-testUtil/SetupUtil.class
-testClass/HotelBookingTest.class
-testUtil/WaitUtil$1.class
+com/test/automation/driverSetUp/ChromeDriverSetUp.class
+com/test/automation/driverSetUp/IeDriverSetUp.class
+com/test/automation/Application.class
+com/test/automation/enums/BrowserName.class
+com/test/automation/driverSetUp/FireFoxDriverSetUp.class
+com/test/automation/driverSetUp/CrossBrowserSetUp.class

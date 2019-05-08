@@ -1,6 +1,6 @@
-/home/evive/IdeaProjects/codingRound/src/main/java/testUtil/CommandUtil.java
-/home/evive/IdeaProjects/codingRound/src/main/java/testUtil/WaitUtil.java
-/home/evive/IdeaProjects/codingRound/src/main/java/testClass/FlightBookingTest.java
-/home/evive/IdeaProjects/codingRound/src/main/java/testUtil/SetupUtil.java
-/home/evive/IdeaProjects/codingRound/src/main/java/testClass/HotelBookingTest.java
-/home/evive/IdeaProjects/codingRound/src/main/java/testClass/SignInTest.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/driverSetUp/ChromeDriverSetUp.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/enums/BrowserName.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/driverSetUp/FireFoxDriverSetUp.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/driverSetUp/CrossBrowserSetUp.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/Application.java
+/home/evive/IdeaProjects/TvCodingChallenge/src/main/java/com/test/automation/driverSetUp/IeDriverSetUp.java
