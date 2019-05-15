@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.TimeUnit;
@@ -35,5 +36,10 @@ public final class WaitUtil {
      return false;
    }
     return true;
+  }
+
+  public static void waitForPageLoad(WebDriver driver){
+    new WebDriverWait(driver, 10).until(
+            (Function<? super WebDriver, Boolean>) webDriver -> "complete".equals(((JavascriptExecutor) webDriver).executeScript("return document.readyState")));
   }
 }

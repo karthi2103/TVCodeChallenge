@@ -1,7 +1,5 @@
 package com.test.automation.enums;
 
-import lombok.Builder;
-
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;

@@ -2,6 +2,7 @@ package com.test.automation.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -45,6 +46,18 @@ public final class CommandUtil {
         return false;
       }
     }
+
+  public static boolean handleAutoCompletion(By by, WebDriver driver){
+    WaitUtil.waitForTheElementToBeSeenOnPage(driver, by, 5);
+    List<WebElement> autoCompleteResults = driver.findElements(by);
+    return !autoCompleteResults.isEmpty() && CommandUtil.clickOnElement(driver,autoCompleteResults.get(0));
+  }
+
+  public static String fillDropDownWithValues(String numberOfAdults, WebElement adultsCountDropDown) {
+    Select adultTravellersSelectElement = new Select(adultsCountDropDown);
+    adultTravellersSelectElement.selectByVisibleText(numberOfAdults);
+    return adultTravellersSelectElement.getFirstSelectedOption().getText();
+  }
   }
 
 

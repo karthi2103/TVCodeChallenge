@@ -1,6 +1,5 @@
 package com.test.automation.pom;
 
-import com.test.automation.enums.BrowserName;
 import com.test.automation.util.CommandUtil;
 import com.test.automation.util.WaitUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -9,10 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Slf4j
@@ -48,6 +44,15 @@ public class ClearTripFlightBookingPage {
   @FindBy(id = "SearchBtn")
   private WebElement searchFlightsButton;
 
+  @FindBy(linkText = "Hotels")
+  private WebElement hotelsLink;
+
+  @FindBy(linkText = "Your trips")
+  private WebElement yourTrips;
+
+  @FindBy(id = "SignIn")
+  private WebElement signin;
+
 
   private WebDriver driver;
 
@@ -77,9 +82,6 @@ public class ClearTripFlightBookingPage {
     return CommandUtil.isElementPresent(toLocationPicker) && toLocationPicker.isEnabled();
   }
 
-  public boolean isDepartureDatePickerEnabled() {
-    return CommandUtil.isElementPresent(departureDatePicker) && departureDatePicker.isEnabled();
-  }
 
   public boolean isAdultsCountPickerEnabled() {
     return CommandUtil.isElementPresent(adultsCountDropDown);
@@ -87,6 +89,14 @@ public class ClearTripFlightBookingPage {
 
   public boolean isSearchButtonEnabled() {
     return CommandUtil.isElementPresent(searchFlightsButton) && searchFlightsButton.isEnabled();
+  }
+
+  public boolean isYourTripSectionEnabled(){
+    return CommandUtil.isElementPresent(yourTrips) && yourTrips.isEnabled();
+  }
+
+  public boolean isSignInButtonEnabled(){
+    return CommandUtil.clickOnElement(driver,yourTrips) && CommandUtil.isElementPresent(signin) && signin.isEnabled();
   }
 
   public boolean clickOnOneWay() {
@@ -106,20 +116,18 @@ public class ClearTripFlightBookingPage {
 
   public boolean enterFromLocation(String fromLocation) {
     fromLocationPicker.clear();
+    fromLocationPicker.click();
     fromLocationPicker.sendKeys(fromLocation);
-    return handleAutoCompletion(By.xpath("//ul[@id='ui-id-1']//li//a"));
+    return CommandUtil.handleAutoCompletion(By.xpath("//ul[@id='ui-id-1']//li//a"), driver);
   }
 
-  private boolean handleAutoCompletion(By by){
-    WaitUtil.waitForTheElementToBeSeenOnPage(driver, by, 5);
-    List<WebElement> autoCompleteResults = driver.findElements(by);
-    return !autoCompleteResults.isEmpty() && CommandUtil.clickOnElement(driver,autoCompleteResults.get(0));
-  }
+
 
   public boolean enterToLocation(String toLocation) {
     toLocationPicker.clear();
+    toLocationPicker.click();
     toLocationPicker.sendKeys(toLocation);
-    return handleAutoCompletion(By.xpath("//ul[@id='ui-id-2']//li//a"));
+    return CommandUtil.handleAutoCompletion(By.xpath("//ul[@id='ui-id-2']//li//a"), driver);
   }
 
   public boolean pickFirstDateFromCalender() {
@@ -136,22 +144,27 @@ public class ClearTripFlightBookingPage {
             && CommandUtil.isElementPresent(driver,By.className("searchSummary"));
   }
 
-  public String selectNumberOfChildrenInTravel(int numberOfChild){
-    Select childrenSelectElement = new Select(childrenCountDropDown);
-    childrenSelectElement.selectByVisibleText(Integer.toString(numberOfChild));
-    return childrenSelectElement.getFirstSelectedOption().getText();
+  public String selectNumberOfChildrenInTravel(String numberOfChild){
+    return CommandUtil.fillDropDownWithValues(numberOfChild, childrenCountDropDown);
   }
 
-  public String selectNumberOfAdultsInTravel(int numberOfAdults){
-    Select adultTravellersSelectElement = new Select(adultsCountDropDown);
-    adultTravellersSelectElement.selectByVisibleText(Integer.toString(numberOfAdults));
-    return adultTravellersSelectElement.getFirstSelectedOption().getText();
+  public String selectNumberOfAdultsInTravel(String numberOfAdults){
+    return CommandUtil.fillDropDownWithValues(numberOfAdults, adultsCountDropDown);
   }
 
-  public String selectNumberOfInfantsInTravel(int numberOfInfants){
-    Select infantTravellersElement = new Select(infantsCountDropDown);
-    infantTravellersElement.selectByVisibleText(Integer.toString(numberOfInfants));
-    return infantTravellersElement.getFirstSelectedOption().getText();
+  public String selectNumberOfInfantsInTravel(String numberOfInfants){
+    return CommandUtil.fillDropDownWithValues(numberOfInfants, infantsCountDropDown);
+  }
+
+
+
+  public void  getToHotelsPage(WebDriver driver){
+     CommandUtil.clickOnElement(driver,hotelsLink);
+  }
+
+  public void getToSignInModal(){
+    CommandUtil.clickOnElement(driver,yourTrips);
+    CommandUtil.clickOnElement(driver,signin);
   }
 
 }
