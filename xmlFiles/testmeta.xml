@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Clear Trip Parallel Test" parallel="tests" thread-count="3">
+
+    <test name="Test One way Fight Booking">
+        <classes>
+            <class name="common.pages.flight.booking.test.oneway.trip.search.results.testcase.TestCaseOneForOneWayJourneySearchResult"/>
+        </classes>
+    </test>
+
+    <test name="Test Hotel booking">
+        <classes>
+            <class name="common.pages.hotel.booking.search.result.testcases.TestCaseOneForHotelsBookingSearchResult"/>
+        </classes>
+    </test>
+
+    <test name="Test unsuccessfull signin">
+        <classes>
+            <class name="common.pages.signin.error.message.test.testcases.TestCaseOneForErrorMessageInSignIn"/>
+        </classes>
+    </test>
+</suite>
