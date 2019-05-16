@@ -13,5 +13,5 @@ Run parameters
 ----------------------------------
 Browser name is parameterised and is being picked from property file.
 
-Run Parameters for test case execution : -Dprops.file.path="{projectLocation/properties}"
+Run Parameters for test case execution : -Dprops.file.path="{projectLocation}/properties"
 Please refer testmeta.xml for parallel integration testing
